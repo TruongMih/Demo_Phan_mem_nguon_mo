@@ -1,23 +1,32 @@
 let students = [
   { id: 1, name: "Le Pham Hoai N", class: "CNTT", score: 4.5 },
-  { id: 1, name: "Do Thanh L", class: "QTKD", score: 5.0 },
-  { id: 1, name: "Truong Nhut M", class: "CNTT", score: 10.0 },
+  { id: 2, name: "Do Thanh L", class: "QTKD", score: 5.0 },
+  { id: 3, name: "Truong Nhut M", class: "CNTT", score: 10.0 },
 ];
-
-const total = document.getElementById("stat-total");
-const classes = document.getElementById("stat-classes");
-const gpa = document.getElementById("stat-gpa");
 
 const body = document.getElementById("student-body");
 const searchInput = document.getElementById("search-input");
 
 // Phan thong ke
 function updateStats() {
-  total = students.length;
-  classes = new Set(students.map((person) => person.class)).size;
-  gqa = total ? students.reduce((sum, s) => (sum + s.score) / total) : "0";
+  const rows = document.querySelectorAll("#student-body tr");
+  const classes = new Set();
+  let sum = 0;
+
+  rows.forEach(tr => {
+    const cells = tr.querySelectorAll("td");
+    classes.add(cells[2].textContent.trim());      
+    sum += parseFloat(cells[3].textContent) || 0;     
+  });
+
+  const total = rows.length;
+  document.getElementById("stat-total").textContent = total;
+  document.getElementById("stat-classes").textContent = classes.size;
+  document.getElementById("stat-gpa").textContent =
+    total ? (sum / total).toFixed(1) : 0;
 }
 
+updateStats();
 // Bang
 function escapeHtml(text) {
   const div = document.createElement("div");
@@ -32,7 +41,7 @@ function renderTable(list) {
     <tr>
       <td>${escapeHtml(s.id)}</td>
       <td>${escapeHtml(s.name)}</td>
-      <td>${escapeHtml(s.cls)}</td>
+      <td>${escapeHtml(s.class)}</td>
       <td>${s.score}</td>
       <td class="actions">
         <button type="button" class="btn btn-small" data-action="edit" data-id="${escapeHtml(s.id)}">Sửa</button>
@@ -41,8 +50,7 @@ function renderTable(list) {
     </tr>`,
     )
     .join("");
-}
-
+};
 function render() {
   const q = searchInput.value.trim().toLowerCase();
   const list = q
@@ -58,3 +66,4 @@ function render() {
     localStorage.setItem("students", JSON.stringify(students));
   } catch (e) {}
 }
+render();
