@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <!-- Tiêu đề -->
+      <header class="app-header">
+        <h1>Open Student</h1>
+      </header>
+
+      <!-- Thống kê -->
+      <section class="stats" aria-label="Thống kê">
+        <div class="stat">
+          <span class="stat-value">120</span>
+          <span class="stat-label">Sinh viên</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">5</span>
+          <span class="stat-label">Lớp</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">8.2</span>
+          <span class="stat-label">GPA trung bình</span>
+        </div>
+      </section>
+
+      <!-- Danh sách sinh viên -->
+      <section class="student-list">
+        <h2>Danh sách sinh viên</h2>
+
+        <div class="toolbar">
+          <div class="search">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input
+              type="search"
+              placeholder="Tìm kiếm..."
+              aria-label="Tìm kiếm sinh viên"
+            />
+          </div>
+          <button type="button" class="btn btn-primary">
+            + Thêm sinh viên
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>MSSV</th>
+                <th>Họ tên</th>
+                <th>Lớp</th>
+                <th>Điểm</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SV001</td>
+                <td>Nguyễn Văn An</td>
+                <td>CNTT1</td>
+                <td>8.5</td>
+                <td class="actions">
+                  <button type="button" class="btn btn-small">Sửa</button>
+                  <button type="button" class="btn btn-small btn-danger">
+                    Xóa
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>SV002</td>
+                <td>Trần Thị Bình</td>
+                <td>CNTT2</td>
+                <td>9.0</td>
+                <td class="actions">
+                  <button type="button" class="btn btn-small">Sửa</button>
+                  <button type="button" class="btn btn-small btn-danger">
+                    Xóa
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>SV003</td>
+                <td>Lê Hoàng Cường</td>
+                <td>KT1</td>
+                <td>7.6</td>
+                <td class="actions">
+                  <button type="button" class="btn btn-small">Sửa</button>
+                  <button type="button" class="btn btn-small btn-danger">
+                    Xóa
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
